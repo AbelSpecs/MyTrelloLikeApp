@@ -1,0 +1,35 @@
+.cardItem {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  justify-content: space-between;
+}
+
+.cardItemContent div{
+  display: flex;
+  flex-direction: column;
+}
+
+.cardItemContent div span:nth-child(1){
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.cardItemContent div span:nth-child(2){
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.itemCardActions{
+  width: 40%;
+  height: fit-content;
+}
+
+button.arrowBtnRight, button.arrowBtnLeft{
+  min-width: 20%;
+}
+
+button.arrowBtnRight > svg, button.arrowBtnLeft > svg{
+  height: 0.6em;
+}

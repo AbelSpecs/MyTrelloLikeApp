@@ -1,0 +1,18 @@
+.InitialInterview {
+
+}
+
+.card{
+  width: 100%;
+}
+
+.actions{
+  justify-content: center;
+}
+
+button.button{
+  text-transform: capitalize;
+}
+
+
+
