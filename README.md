@@ -1,3 +1,6 @@
+# MyTrelloLikeApp
+A Trello like app for interviews
+
 # Cognizant Softvision challenge
 
 ![Cognizant Softvision](./src/assets/logo.png "Cognizant Softvision")
