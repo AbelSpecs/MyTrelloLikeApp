@@ -14,5 +14,17 @@ button.button{
   text-transform: capitalize;
 }
 
+.dialogTitle{
+  text-align: center;
+}
+
+.dialogFields{
+  display: flex;
+  flex-direction: column;
+}
+
+div.dialogActions{
+  justify-content: center;
+}
 
 

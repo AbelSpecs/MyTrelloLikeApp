@@ -21,11 +21,16 @@ const Rejection: FC<RejectionProps> = ({candidatesList, handleChangeStep}) => {
           <Typography gutterBottom variant="h6" component="div">
             Rejection
           </Typography>
-          {candidatesList?.map((item, i) =>
-            (
-              <CardItem item={item} key={i} handleChangeStep={handleChangeStep} backStep={backStep}/>
-            )
-          )}
+          {
+            candidatesList?.length === 0
+            ? <p>No hay Candidatos</p>
+            :
+              (candidatesList?.map((item, i) =>
+                (
+                  <CardItem item={item} key={i} handleChangeStep={handleChangeStep} backStep={backStep}/>
+                )
+              ))
+          }
         </CardContent>
       </Card>
     </Fragment>

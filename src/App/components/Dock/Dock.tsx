@@ -18,10 +18,16 @@ const Dock: FC<DockProps> = () => {
     const abortController = new AbortController();
     const signal = abortController.signal;
 
-    candidates.candidates.list()
-    .then(data => {
-      setCandidatesList(data);
-    });
+    if(!localStorage.getItem("candidates")){
+      candidates.candidates.list()
+      .then(data => {
+        setCandidatesList(data);
+        localStorage.setItem("candidates", JSON.stringify(data));
+      });
+    }
+    else{
+      setCandidatesList(JSON.parse(localStorage.getItem("candidates") as string));
+    }
 
   }, [])
 
@@ -31,14 +37,24 @@ const Dock: FC<DockProps> = () => {
     const updateCandidate = {...candidatesUpdate[index], step: step};
     candidatesUpdate[index] = updateCandidate;
     setCandidatesList(candidatesUpdate);
+    localStorage.removeItem("candidates");
+    localStorage.setItem("candidates", JSON.stringify(candidatesUpdate));
   };
+
+  const addCandidate = (candidate: Candidate): any => {
+    setCandidatesList([...candidatesList as Candidate[], candidate]);
+    const updateCandidates = JSON.parse(localStorage.getItem("candidates") as string);
+    localStorage.removeItem("candidates");
+    updateCandidates.push(candidate);
+    localStorage.setItem("candidates", JSON.stringify(updateCandidates));
+  }
 
   return (
     <Fragment>
       <Grid container justifyContent={'space-around'} >
         <Grid item xs={12} md={2}>
           <InitialInterview candidatesList={candidatesList?.filter(c => c.step === "Entrevista inicial")}
-                            handleChangeStep={handleChangeStep}/>
+                            handleChangeStep={handleChangeStep} addCandidate={addCandidate}/>
         </Grid>
 
         <Grid item xs={12} md={2}>
