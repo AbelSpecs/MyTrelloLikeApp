@@ -22,11 +22,16 @@ const Assignment: FC<AssignmentProps> = ({candidatesList, handleChangeStep}) => 
           <Typography gutterBottom variant="h6" component="div">
             Assignment
           </Typography>
-          {candidatesList?.map((item, i) =>
-            (
-              <CardItem item={item} key={i} handleChangeStep={handleChangeStep} nexStep={nexStep} backStep={backStep}/>
-            )
-          )}
+          {
+            candidatesList?.length === 0
+            ? <p>No hay Candidatos</p>
+            :
+              (candidatesList?.map((item, i) =>
+                (
+                  <CardItem item={item} key={i} handleChangeStep={handleChangeStep} nexStep={nexStep} backStep={backStep}/>
+                )
+              ))
+          }
         </CardContent>
       </Card>
     </Fragment>
