@@ -6,8 +6,10 @@ import Dock from './Dock';
 describe('<Dock />', () => {
   test('it should mount', () => {
     render(<Dock />);
-    
+
     const dock = screen.getByTestId('Dock');
+
+   
 
     expect(dock).toBeInTheDocument();
   });

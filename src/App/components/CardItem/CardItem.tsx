@@ -18,7 +18,7 @@ interface CardItemProps {
 const CardItem: FC<CardItemProps> = ({item, handleChangeStep, nexStep, backStep}) => {
 
   return (
-    <Card className={styles.cardItem}>
+    <Card className={styles.cardItem} data-testid="Card">
       <CardHeader
         className={styles.cardItemContent}
         title={item.name}
