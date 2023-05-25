@@ -5,8 +5,11 @@ import Offer from './Offer';
 
 describe('<Offer />', () => {
   test('it should mount', () => {
-    render(<Offer />);
-    
+    const candidateList = [{id: 'Abel', name: 'Abel', step: 'Entrevista técnica', comments: ''}];
+    const handleChangeStep = jest.fn();
+
+    render(<Offer candidatesList={candidateList} handleChangeStep={handleChangeStep}/>);
+
     const offer = screen.getByTestId('Offer');
 
     expect(offer).toBeInTheDocument();

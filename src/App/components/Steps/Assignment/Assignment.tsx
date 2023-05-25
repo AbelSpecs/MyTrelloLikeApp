@@ -17,7 +17,7 @@ const Assignment: FC<AssignmentProps> = ({candidatesList, handleChangeStep}) => 
 
   return (
     <Fragment>
-      <Card className={styles.card}>
+      <Card className={styles.card} data-testid="Assignment">
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
             Assignment

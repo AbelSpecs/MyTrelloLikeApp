@@ -17,7 +17,7 @@ const TechnicalInterview: FC<TechnicalInterviewProps> = ({candidatesList,  handl
 
   return (
     <Fragment>
-      <Card className={styles.card}>
+      <Card className={styles.card} data-testid="TechnicalInterview">
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
             Technical Interview

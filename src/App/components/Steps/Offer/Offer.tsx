@@ -17,7 +17,7 @@ const Offer: FC<OfferProps> = ({candidatesList, handleChangeStep}) => {
 
   return (
     <Fragment>
-      <Card className={styles.card}>
+      <Card className={styles.card} data-testid="Offer">
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
             Offer

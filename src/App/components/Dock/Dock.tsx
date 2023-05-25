@@ -51,7 +51,7 @@ const Dock: FC<DockProps> = () => {
 
   return (
     <Fragment>
-      <Grid container justifyContent={'space-around'} >
+      <Grid container justifyContent={'space-around'} data-testid="Dock">
         <Grid item xs={12} md={2}>
           <InitialInterview candidatesList={candidatesList?.filter(c => c.step === "Entrevista inicial")}
                             handleChangeStep={handleChangeStep} addCandidate={addCandidate}/>

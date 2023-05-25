@@ -5,8 +5,11 @@ import TechnicalInterview from './TechnicalInterview';
 
 describe('<TechnicalInterview />', () => {
   test('it should mount', () => {
-    render(<TechnicalInterview />);
-    
+    const candidateList = [{id: 'Abel', name: 'Abel', step: 'Entrevista Inicial', comments: ''}];
+    const handleChangeStep = jest.fn();
+
+    render(<TechnicalInterview candidatesList={candidateList} handleChangeStep={handleChangeStep}/>);
+
     const technicalInterview = screen.getByTestId('TechnicalInterview');
 
     expect(technicalInterview).toBeInTheDocument();

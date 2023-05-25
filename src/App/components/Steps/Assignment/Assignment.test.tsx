@@ -5,8 +5,10 @@ import Assignment from './Assignment';
 
 describe('<Assignment />', () => {
   test('it should mount', () => {
-    render(<Assignment />);
-    
+    const candidateList = [{id: 'Abel', name: 'Abel', step: 'Entrevista técnica', comments: ''}];
+    const handleChangeStep = jest.fn();
+    render(<Assignment candidatesList={candidateList} handleChangeStep={handleChangeStep}/>);
+
     const assignment = screen.getByTestId('Assignment');
 
     expect(assignment).toBeInTheDocument();

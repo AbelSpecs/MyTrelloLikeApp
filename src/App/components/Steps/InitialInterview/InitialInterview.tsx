@@ -56,7 +56,7 @@ const InitialInterview: FC<InitialInterviewProps> = ({candidatesList, handleChan
   return (
 
     <Fragment>
-      <Card className={styles.card}>
+      <Card className={styles.card} data-testid="InitialInterview">
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
             Entrevista Inicial
