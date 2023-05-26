@@ -83,7 +83,7 @@ const InitialInterview: FC<InitialInterviewProps> = ({candidatesList, handleChan
           <TextField
             autoFocus
             margin="dense"
-            id="name"
+            name='name'
             label="Name"
             type="text"
             variant="standard"
@@ -92,7 +92,7 @@ const InitialInterview: FC<InitialInterviewProps> = ({candidatesList, handleChan
           />
           <TextField
             margin="dense"
-            id="name"
+            name='comment'
             label="Comment"
             type="text"
             variant="standard"

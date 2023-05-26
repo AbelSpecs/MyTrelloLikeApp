@@ -2,14 +2,16 @@
   "env": {
     "browser": false,
     "es2021": true,
-    "node": true
+    "node": true,
+    "cypress/globals": true
   },
   "extends": [
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:cypress/recommended"
   ],
-  "plugins": ["react", "prettier", "import", "@typescript-eslint"],
+  "plugins": ["react", "prettier", "import", "@typescript-eslint", "cypress"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -24,6 +26,12 @@
     }
   },
   "rules": {
+    "cypress/no-assigning-return-values": "error",
+    "cypress/no-unnecessary-waiting": "error",
+    "cypress/assertion-before-screenshot": "warn",
+    "cypress/no-force": "warn",
+    "cypress/no-async-tests": "error",
+    "cypress/no-pause": "error",
     "no-console": "warn",
     "react/prop-types": "off",
     "prettier/prettier": [
