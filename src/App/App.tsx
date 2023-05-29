@@ -7,7 +7,7 @@ import Dock from "./components/Dock/Dock";
 
 function App() {
   return (
-    <main style={{width:'100%'}}>
+    <main style={{width:'100%', marginTop: 20}}>
       <Dock/>
       {/* <img alt="Softvision" src={logo} width={320} />
       <h1 className={styles.title}>Lets get this party started</h1> */}

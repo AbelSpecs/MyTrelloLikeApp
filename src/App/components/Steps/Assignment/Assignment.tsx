@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Candidate } from '../../../../types/candidate';
 import CardItem from '../../CardItem/CardItem';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 interface AssignmentProps {
   candidatesList: Candidate[] | undefined,
@@ -14,6 +15,7 @@ interface AssignmentProps {
 const Assignment: FC<AssignmentProps> = ({candidatesList, handleChangeStep}) => {
   const nexStep = "Rechazo";
   const backStep = "Oferta";
+  const [parent, enableAnimations] = useAutoAnimate();
 
   return (
     <Fragment>
@@ -25,12 +27,16 @@ const Assignment: FC<AssignmentProps> = ({candidatesList, handleChangeStep}) => 
           {
             candidatesList?.length === 0
             ? <p>No hay Candidatos</p>
-            :
-              (candidatesList?.map((item, i) =>
-                (
-                  <CardItem item={item} key={i} handleChangeStep={handleChangeStep} nexStep={nexStep} backStep={backStep}/>
-                )
-              ))
+            :<div ref={parent}>
+              {
+                (candidatesList?.map((item, i) =>
+                  (
+                    <CardItem item={item} key={i} handleChangeStep={handleChangeStep} nexStep={nexStep} backStep={backStep}/>
+                  )
+                ))
+              }
+            </div>
+
           }
         </CardContent>
       </Card>

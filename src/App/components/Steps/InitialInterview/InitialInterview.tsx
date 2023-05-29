@@ -12,19 +12,21 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 
 interface InitialInterviewProps {
   candidatesList: Candidate[] | undefined,
   handleChangeStep: any,
-  addCandidate: any
+  addCandidate: any,
+  // checked: boolean
 }
 
 const InitialInterview: FC<InitialInterviewProps> = ({candidatesList, handleChangeStep, addCandidate}) => {
   const nexStep = "Entrevista técnica";
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState({name: '', comment: ''});
+  const [parent, enableAnimations] = useAutoAnimate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -64,12 +66,13 @@ const InitialInterview: FC<InitialInterviewProps> = ({candidatesList, handleChan
           {
              candidatesList?.length === 0
              ? <p>No hay Candidatos</p>
-             :
-              (candidatesList?.map((item, i) =>
-                (
-                  <CardItem item={item} key={i} handleChangeStep={handleChangeStep} nexStep={nexStep}/>
-                )
-              ))
+             :<div ref={parent}>
+               {(candidatesList?.map((item, i) =>
+                 (
+                    <CardItem item={item} key={i} handleChangeStep={handleChangeStep} nexStep={nexStep}/>
+                 )
+               ))}
+             </div>
           }
         </CardContent>
         <CardActions  className={styles.actions}>

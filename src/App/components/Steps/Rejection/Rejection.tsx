@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Candidate } from '../../../../types/candidate';
 import CardItem from '../../CardItem/CardItem';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 interface RejectionProps {
   candidatesList: Candidate[] | undefined,
@@ -13,6 +14,7 @@ interface RejectionProps {
 
 const Rejection: FC<RejectionProps> = ({candidatesList, handleChangeStep}) => {
   const backStep = "Asignación";
+  const [parent, enableAnimations] = useAutoAnimate();
 
   return (
     <Fragment>
@@ -24,12 +26,16 @@ const Rejection: FC<RejectionProps> = ({candidatesList, handleChangeStep}) => {
           {
             candidatesList?.length === 0
             ? <p>No hay Candidatos</p>
-            :
-              (candidatesList?.map((item, i) =>
-                (
-                  <CardItem item={item} key={i} handleChangeStep={handleChangeStep} backStep={backStep}/>
-                )
-              ))
+            :<div ref={parent}>
+              {
+                (candidatesList?.map((item, i) =>
+                  (
+                    <CardItem item={item} key={i} handleChangeStep={handleChangeStep} backStep={backStep}/>
+                  )
+                ))
+              }
+            </div>
+
           }
         </CardContent>
       </Card>

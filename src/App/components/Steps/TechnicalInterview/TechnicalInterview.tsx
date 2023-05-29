@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Candidate } from '../../../../types/candidate';
 import CardItem from '../../CardItem/CardItem';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 interface TechnicalInterviewProps {
   candidatesList: Candidate[] | undefined,
@@ -14,6 +15,7 @@ interface TechnicalInterviewProps {
 const TechnicalInterview: FC<TechnicalInterviewProps> = ({candidatesList,  handleChangeStep}) => {
   const nexStep = "Oferta";
   const backStep = "Entrevista inicial";
+  const [parent, enableAnimations] = useAutoAnimate();
 
   return (
     <Fragment>
@@ -25,12 +27,15 @@ const TechnicalInterview: FC<TechnicalInterviewProps> = ({candidatesList,  handl
           {
             candidatesList?.length === 0
             ? <p>No hay Candidatos</p>
-            :
-              (candidatesList?.map((item, i) =>
-                (
-                  <CardItem item={item} key={i} handleChangeStep={handleChangeStep} nexStep={nexStep} backStep={backStep}/>
-                )
-              ))
+            :<div ref={parent}>
+              {
+                (candidatesList?.map((item, i) =>
+                  (
+                    <CardItem item={item} key={i} handleChangeStep={handleChangeStep} nexStep={nexStep} backStep={backStep}/>
+                  )
+                ))
+              }
+            </div>
           }
         </CardContent>
       </Card>
